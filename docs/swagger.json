@@ -1,0 +1,1536 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "RESTConfig api spec",
+        "title": "Niktonet Explorer - RESTConfig Api",
+        "contact": {},
+        "version": "1.0"
+    },
+    "host": "https://explorer.niktonet.com/",
+    "basePath": "/",
+    "paths": {
+        "/api/account/address": {
+            "get": {
+                "description": "Get all balances by address",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "account"
+                ],
+                "summary": "Get all balances by address",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "address",
+                        "name": "address",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "bondedDenom",
+                        "name": "bondedDenom",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/github_com_hessegg_nikto-explorer_server_bc_types.Token"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/account/balance": {
+            "get": {
+                "description": "Get balance by denom",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "account"
+                ],
+                "summary": "Get balance by denom",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "address",
+                        "name": "address",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "denom",
+                        "name": "denom",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/github_com_hessegg_nikto-explorer_server_bc_types.Token"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/account/delegation": {
+            "get": {
+                "description": "Get delegations by address",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "account"
+                ],
+                "summary": "Get delegations by address",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "address",
+                        "name": "address",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/github_com_hessegg_nikto-explorer_server_bc_types.Delegation"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/account/redelegation": {
+            "get": {
+                "description": "Get redelegations by address",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "account"
+                ],
+                "summary": "Get redelegations by address",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "address",
+                        "name": "address",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/github_com_hessegg_nikto-explorer_server_bc_types.Redelegation"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/account/unbonding": {
+            "get": {
+                "description": "Get unbonding by address",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "account"
+                ],
+                "summary": "Get unbonding by address",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "address",
+                        "name": "address",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/types.Unbonding"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/block/height": {
+            "get": {
+                "description": "get block by height",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "block"
+                ],
+                "summary": "Get block by height",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "height",
+                        "name": "height",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/github_com_hessegg_nikto-explorer_server_bc_types.Block"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/block/latest": {
+            "get": {
+                "description": "get latest block by count",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "block"
+                ],
+                "summary": "Get latest block by count",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "limit",
+                        "name": "limit",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "page",
+                        "name": "page",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/types.BlockResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/block/proposed": {
+            "get": {
+                "description": "get block by proposer",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "block"
+                ],
+                "summary": "Get block by proposer",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "limit",
+                        "name": "limit",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "page",
+                        "name": "page",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "address",
+                        "name": "address",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/types.BlockResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/nft/info": {
+            "get": {
+                "description": "get NF token by id",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "token"
+                ],
+                "summary": "Get NF token by id",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "id",
+                        "name": "id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/api/nft/list": {
+            "get": {
+                "description": "get latest nft by alphabet",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "nft"
+                ],
+                "summary": "Get latest nft by alphabet",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "limit",
+                        "name": "limit",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "page",
+                        "name": "page",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/api/stats/now": {
+            "get": {
+                "description": "get stats of explorer",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "stats"
+                ],
+                "summary": "Get stats of explorer",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/types.Stats"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/stats/tx": {
+            "get": {
+                "description": "get stats of explorer",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "stats"
+                ],
+                "summary": "Get stats of explorer",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/types.TxStats"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/token/bydenom": {
+            "get": {
+                "description": "get token by denominator",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "token"
+                ],
+                "summary": "Get token by denominator",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "denom",
+                        "name": "denom",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/api/token/list": {
+            "get": {
+                "description": "get latest block by count",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "token"
+                ],
+                "summary": "Get latest block by count",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "limit",
+                        "name": "limit",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "page",
+                        "name": "page",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/api/tx/address": {
+            "get": {
+                "description": "get txs by address",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "tx"
+                ],
+                "summary": "Get txs by address",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "address",
+                        "name": "address",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "limit",
+                        "name": "limit",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "page",
+                        "name": "page",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/github_com_hessegg_nikto-explorer_server_bc_types.TxResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/tx/hash": {
+            "get": {
+                "description": "get tx by hash",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "tx"
+                ],
+                "summary": "Get tx by hash",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "hash",
+                        "name": "hash",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/github_com_hessegg_nikto-explorer_server_bc_types.Tx"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/tx/latest": {
+            "get": {
+                "description": "get latest txs by count",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "tx"
+                ],
+                "summary": "Get latest txs by count",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "limit",
+                        "name": "limit",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "page",
+                        "name": "page",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/github_com_hessegg_nikto-explorer_server_bc_types.TxResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/validator/list": {
+            "get": {
+                "description": "get uptime by address",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "validator"
+                ],
+                "summary": "Get uptime by address",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "address",
+                        "name": "address",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/types.ValidatorUptime"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "github_com_cosmos_cosmos-sdk_codec_types.Any": {
+            "type": "object",
+            "properties": {
+                "type_url": {
+                    "description": "nolint",
+                    "type": "string"
+                },
+                "value": {
+                    "description": "Must be a valid serialized protocol buffer of the above specified type.",
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                }
+            }
+        },
+        "github_com_cosmos_cosmos-sdk_types.Dec": {
+            "type": "object"
+        },
+        "github_com_cosmos_cosmos-sdk_x_staking_types.Delegation": {
+            "type": "object",
+            "properties": {
+                "delegator_address": {
+                    "description": "delegator_address is the bech32-encoded address of the delegator.",
+                    "type": "string"
+                },
+                "shares": {
+                    "description": "shares define the delegation shares received.",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/github_com_cosmos_cosmos-sdk_types.Dec"
+                        }
+                    ]
+                },
+                "validator_address": {
+                    "description": "validator_address is the bech32-encoded address of the validator.",
+                    "type": "string"
+                }
+            }
+        },
+        "github_com_cosmos_cosmos-sdk_x_staking_types.DelegationResponse": {
+            "type": "object",
+            "properties": {
+                "balance": {
+                    "$ref": "#/definitions/types.Coin"
+                },
+                "delegation": {
+                    "$ref": "#/definitions/github_com_cosmos_cosmos-sdk_x_staking_types.Delegation"
+                }
+            }
+        },
+        "github_com_cosmos_cosmos-sdk_x_staking_types.Redelegation": {
+            "type": "object",
+            "properties": {
+                "delegator_address": {
+                    "description": "delegator_address is the bech32-encoded address of the delegator.",
+                    "type": "string"
+                },
+                "entries": {
+                    "description": "entries are the redelegation entries.",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/types.RedelegationEntry"
+                    }
+                },
+                "validator_dst_address": {
+                    "description": "validator_dst_address is the validator redelegation destination operator address.",
+                    "type": "string"
+                },
+                "validator_src_address": {
+                    "description": "validator_src_address is the validator redelegation source operator address.",
+                    "type": "string"
+                }
+            }
+        },
+        "github_com_cosmos_cosmos-sdk_x_staking_types.Validator": {
+            "type": "object",
+            "properties": {
+                "commission": {
+                    "description": "commission defines the commission parameters.",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/types.Commission"
+                        }
+                    ]
+                },
+                "consensus_pubkey": {
+                    "description": "consensus_pubkey is the consensus public key of the validator, as a Protobuf Any.",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/github_com_cosmos_cosmos-sdk_codec_types.Any"
+                        }
+                    ]
+                },
+                "delegator_shares": {
+                    "description": "delegator_shares defines total shares issued to a validator's delegators.",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/github_com_cosmos_cosmos-sdk_types.Dec"
+                        }
+                    ]
+                },
+                "description": {
+                    "description": "description defines the description terms for the validator.",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/types.Description"
+                        }
+                    ]
+                },
+                "jailed": {
+                    "description": "jailed defined whether the validator has been jailed from bonded status or not.",
+                    "type": "boolean"
+                },
+                "min_self_delegation": {
+                    "description": "min_self_delegation is the validator's self declared minimum self delegation.",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/types.Int"
+                        }
+                    ]
+                },
+                "operator_address": {
+                    "description": "operator_address defines the address of the validator's operator; bech encoded in JSON.",
+                    "type": "string"
+                },
+                "status": {
+                    "description": "status is the validator status (bonded/unbonding/unbonded).",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/types.BondStatus"
+                        }
+                    ]
+                },
+                "tokens": {
+                    "description": "tokens define the delegated tokens (incl. self-delegation).",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/types.Int"
+                        }
+                    ]
+                },
+                "unbonding_height": {
+                    "description": "unbonding_height defines, if unbonding, the height at which this validator has begun unbonding.",
+                    "type": "integer"
+                },
+                "unbonding_time": {
+                    "description": "unbonding_time defines, if unbonding, the min time for the validator to complete unbonding.",
+                    "type": "string"
+                }
+            }
+        },
+        "github_com_hessegg_nikto-explorer_server_bc_types.Block": {
+            "type": "object",
+            "properties": {
+                "cons_address": {
+                    "type": "string"
+                },
+                "diff_time": {
+                    "type": "integer"
+                },
+                "moniker": {
+                    "type": "string"
+                },
+                "tm_block": {
+                    "$ref": "#/definitions/github_com_tendermint_tendermint_proto_tendermint_types.Block"
+                },
+                "val_address": {
+                    "type": "string"
+                }
+            }
+        },
+        "github_com_hessegg_nikto-explorer_server_bc_types.Delegation": {
+            "type": "object",
+            "properties": {
+                "balance": {
+                    "$ref": "#/definitions/types.Coin"
+                },
+                "delegation": {
+                    "$ref": "#/definitions/github_com_cosmos_cosmos-sdk_x_staking_types.Delegation"
+                },
+                "moniker": {
+                    "type": "string"
+                }
+            }
+        },
+        "github_com_hessegg_nikto-explorer_server_bc_types.DelegationResponse": {
+            "type": "object",
+            "properties": {
+                "delegation": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/github_com_cosmos_cosmos-sdk_x_staking_types.DelegationResponse"
+                    }
+                },
+                "total": {
+                    "type": "integer"
+                }
+            }
+        },
+        "github_com_hessegg_nikto-explorer_server_bc_types.Redelegation": {
+            "type": "object",
+            "properties": {
+                "entries": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/types.RedelegationEntryResponse"
+                    }
+                },
+                "moniker_dst": {
+                    "type": "string"
+                },
+                "moniker_src": {
+                    "type": "string"
+                },
+                "redelegation": {
+                    "$ref": "#/definitions/github_com_cosmos_cosmos-sdk_x_staking_types.Redelegation"
+                }
+            }
+        },
+        "github_com_hessegg_nikto-explorer_server_bc_types.Token": {
+            "type": "object",
+            "properties": {
+                "coin": {
+                    "$ref": "#/definitions/types.Coin"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "owner_address": {
+                    "type": "string"
+                },
+                "precision": {
+                    "type": "integer"
+                },
+                "symbol": {
+                    "type": "string"
+                }
+            }
+        },
+        "github_com_hessegg_nikto-explorer_server_bc_types.Tx": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer"
+                },
+                "height": {
+                    "type": "integer"
+                },
+                "sender": {
+                    "type": "string"
+                },
+                "timestamp": {
+                    "type": "string"
+                },
+                "tx": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "txhash": {
+                    "type": "string"
+                }
+            }
+        },
+        "github_com_hessegg_nikto-explorer_server_bc_types.TxResponse": {
+            "type": "object",
+            "properties": {
+                "total": {
+                    "type": "integer"
+                },
+                "txs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/github_com_hessegg_nikto-explorer_server_bc_types.Tx"
+                    }
+                }
+            }
+        },
+        "github_com_hessegg_nikto-explorer_server_bc_types.Validator": {
+            "type": "object",
+            "properties": {
+                "cons_address": {
+                    "$ref": "#/definitions/sql.NullString"
+                },
+                "cons_pub_key": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "detail": {
+                    "$ref": "#/definitions/github_com_cosmos_cosmos-sdk_x_staking_types.Validator"
+                },
+                "moniker": {
+                    "type": "string"
+                },
+                "rank": {
+                    "type": "integer"
+                },
+                "val_address": {
+                    "type": "string"
+                }
+            }
+        },
+        "github_com_tendermint_tendermint_proto_tendermint_types.Block": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "$ref": "#/definitions/github_com_tendermint_tendermint_proto_tendermint_types.Data"
+                },
+                "evidence": {
+                    "$ref": "#/definitions/github_com_tendermint_tendermint_proto_tendermint_types.EvidenceList"
+                },
+                "header": {
+                    "$ref": "#/definitions/github_com_tendermint_tendermint_proto_tendermint_types.Header"
+                },
+                "last_commit": {
+                    "$ref": "#/definitions/github_com_tendermint_tendermint_proto_tendermint_types.Commit"
+                }
+            }
+        },
+        "github_com_tendermint_tendermint_proto_tendermint_types.BlockID": {
+            "type": "object",
+            "properties": {
+                "hash": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "part_set_header": {
+                    "$ref": "#/definitions/github_com_tendermint_tendermint_proto_tendermint_types.PartSetHeader"
+                }
+            }
+        },
+        "github_com_tendermint_tendermint_proto_tendermint_types.BlockIDFlag": {
+            "type": "integer",
+            "enum": [
+                0,
+                1,
+                2,
+                3
+            ],
+            "x-enum-varnames": [
+                "BlockIDFlagUnknown",
+                "BlockIDFlagAbsent",
+                "BlockIDFlagCommit",
+                "BlockIDFlagNil"
+            ]
+        },
+        "github_com_tendermint_tendermint_proto_tendermint_types.Commit": {
+            "type": "object",
+            "properties": {
+                "block_id": {
+                    "$ref": "#/definitions/github_com_tendermint_tendermint_proto_tendermint_types.BlockID"
+                },
+                "height": {
+                    "type": "integer"
+                },
+                "round": {
+                    "type": "integer"
+                },
+                "signatures": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/github_com_tendermint_tendermint_proto_tendermint_types.CommitSig"
+                    }
+                }
+            }
+        },
+        "github_com_tendermint_tendermint_proto_tendermint_types.CommitSig": {
+            "type": "object",
+            "properties": {
+                "block_id_flag": {
+                    "$ref": "#/definitions/github_com_tendermint_tendermint_proto_tendermint_types.BlockIDFlag"
+                },
+                "signature": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "timestamp": {
+                    "type": "string"
+                },
+                "validator_address": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                }
+            }
+        },
+        "github_com_tendermint_tendermint_proto_tendermint_types.Data": {
+            "type": "object",
+            "properties": {
+                "txs": {
+                    "description": "Txs that will be applied by state @ block.Height+1.\nNOTE: not all txs here are valid.  We're just agreeing on the order first.\nThis means that block.AppHash does not include these txs.",
+                    "type": "array",
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer"
+                        }
+                    }
+                }
+            }
+        },
+        "github_com_tendermint_tendermint_proto_tendermint_types.Evidence": {
+            "type": "object",
+            "properties": {
+                "sum": {
+                    "description": "Types that are valid to be assigned to Sum:\n\t*Evidence_DuplicateVoteEvidence\n\t*Evidence_LightClientAttackEvidence"
+                }
+            }
+        },
+        "github_com_tendermint_tendermint_proto_tendermint_types.EvidenceList": {
+            "type": "object",
+            "properties": {
+                "evidence": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/github_com_tendermint_tendermint_proto_tendermint_types.Evidence"
+                    }
+                }
+            }
+        },
+        "github_com_tendermint_tendermint_proto_tendermint_types.Header": {
+            "type": "object",
+            "properties": {
+                "app_hash": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "chain_id": {
+                    "type": "string"
+                },
+                "consensus_hash": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "data_hash": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "evidence_hash": {
+                    "description": "consensus info",
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "height": {
+                    "type": "integer"
+                },
+                "last_block_id": {
+                    "description": "prev block info",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/github_com_tendermint_tendermint_proto_tendermint_types.BlockID"
+                        }
+                    ]
+                },
+                "last_commit_hash": {
+                    "description": "hashes of block data",
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "last_results_hash": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "next_validators_hash": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "proposer_address": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "time": {
+                    "type": "string"
+                },
+                "validators_hash": {
+                    "description": "hashes from the app output from the prev block",
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "version": {
+                    "description": "basic block info",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/version.Consensus"
+                        }
+                    ]
+                }
+            }
+        },
+        "github_com_tendermint_tendermint_proto_tendermint_types.PartSetHeader": {
+            "type": "object",
+            "properties": {
+                "hash": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "total": {
+                    "type": "integer"
+                }
+            }
+        },
+        "sql.NullString": {
+            "type": "object",
+            "properties": {
+                "string": {
+                    "type": "string"
+                },
+                "valid": {
+                    "description": "Valid is true if String is not NULL",
+                    "type": "boolean"
+                }
+            }
+        },
+        "types.Account": {
+            "type": "object",
+            "properties": {
+                "address": {
+                    "type": "string"
+                },
+                "balance": {
+                    "$ref": "#/definitions/github_com_hessegg_nikto-explorer_server_bc_types.Token"
+                },
+                "balances": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/github_com_hessegg_nikto-explorer_server_bc_types.Token"
+                    }
+                },
+                "delegation": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/github_com_hessegg_nikto-explorer_server_bc_types.Delegation"
+                    }
+                },
+                "name": {
+                    "$ref": "#/definitions/types.AddressName"
+                },
+                "redelegation": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/github_com_hessegg_nikto-explorer_server_bc_types.Redelegation"
+                    }
+                },
+                "unbonding": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/types.Unbonding"
+                    }
+                }
+            }
+        },
+        "types.AddressName": {
+            "type": "object",
+            "properties": {
+                "address": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "xdescription": {
+                    "description": "Types that are valid to be assigned to XDescription:\n\t*AddressName_Description"
+                },
+                "xprofile": {
+                    "description": "Types that are valid to be assigned to XProfile:\n\t*AddressName_Profile"
+                },
+                "xthumbnail": {
+                    "description": "Types that are valid to be assigned to XThumbnail:\n\t*AddressName_Thumbnail"
+                }
+            }
+        },
+        "types.BlockResponse": {
+            "type": "object",
+            "properties": {
+                "blocks": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/github_com_hessegg_nikto-explorer_server_bc_types.Block"
+                    }
+                },
+                "total": {
+                    "type": "integer"
+                }
+            }
+        },
+        "types.BondStatus": {
+            "type": "integer",
+            "enum": [
+                0,
+                1,
+                2,
+                3
+            ],
+            "x-enum-varnames": [
+                "Unspecified",
+                "Unbonded",
+                "Unbonding",
+                "Bonded"
+            ]
+        },
+        "types.Coin": {
+            "type": "object",
+            "properties": {
+                "amount": {
+                    "$ref": "#/definitions/types.Int"
+                },
+                "denom": {
+                    "type": "string"
+                }
+            }
+        },
+        "types.Commission": {
+            "type": "object",
+            "properties": {
+                "commission_rates": {
+                    "description": "commission_rates defines the initial commission rates to be used for creating a validator.",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/types.CommissionRates"
+                        }
+                    ]
+                },
+                "update_time": {
+                    "description": "update_time is the last time the commission rate was changed.",
+                    "type": "string"
+                }
+            }
+        },
+        "types.CommissionRates": {
+            "type": "object",
+            "properties": {
+                "max_change_rate": {
+                    "description": "max_change_rate defines the maximum daily increase of the validator commission, as a fraction.",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/github_com_cosmos_cosmos-sdk_types.Dec"
+                        }
+                    ]
+                },
+                "max_rate": {
+                    "description": "max_rate defines the maximum commission rate which validator can ever charge, as a fraction.",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/github_com_cosmos_cosmos-sdk_types.Dec"
+                        }
+                    ]
+                },
+                "rate": {
+                    "description": "rate is the commission rate charged to delegators, as a fraction.",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/github_com_cosmos_cosmos-sdk_types.Dec"
+                        }
+                    ]
+                }
+            }
+        },
+        "types.Description": {
+            "type": "object",
+            "properties": {
+                "details": {
+                    "description": "details define other optional details.",
+                    "type": "string"
+                },
+                "identity": {
+                    "description": "identity defines an optional identity signature (ex. UPort or Keybase).",
+                    "type": "string"
+                },
+                "moniker": {
+                    "description": "moniker defines a human-readable name for the validator.",
+                    "type": "string"
+                },
+                "security_contact": {
+                    "description": "security_contact defines an optional email for security contact.",
+                    "type": "string"
+                },
+                "website": {
+                    "description": "website defines an optional website link.",
+                    "type": "string"
+                }
+            }
+        },
+        "types.Int": {
+            "type": "object"
+        },
+        "types.RedelegationEntry": {
+            "type": "object",
+            "properties": {
+                "completion_time": {
+                    "description": "completion_time defines the unix time for redelegation completion.",
+                    "type": "string"
+                },
+                "creation_height": {
+                    "description": "creation_height  defines the height which the redelegation took place.",
+                    "type": "integer"
+                },
+                "initial_balance": {
+                    "description": "initial_balance defines the initial balance when redelegation started.",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/types.Int"
+                        }
+                    ]
+                },
+                "shares_dst": {
+                    "description": "shares_dst is the amount of destination-validator shares created by redelegation.",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/github_com_cosmos_cosmos-sdk_types.Dec"
+                        }
+                    ]
+                }
+            }
+        },
+        "types.RedelegationEntryResponse": {
+            "type": "object",
+            "properties": {
+                "balance": {
+                    "$ref": "#/definitions/types.Int"
+                },
+                "redelegation_entry": {
+                    "$ref": "#/definitions/types.RedelegationEntry"
+                }
+            }
+        },
+        "types.Stats": {
+            "type": "object",
+            "properties": {
+                "block_avg_time": {
+                    "type": "integer"
+                },
+                "block_height": {
+                    "type": "integer"
+                },
+                "block_min_time": {
+                    "type": "integer"
+                },
+                "token_total": {
+                    "type": "integer"
+                },
+                "total_bonded_tokens": {
+                    "type": "string"
+                },
+                "tx_total": {
+                    "type": "integer"
+                },
+                "validator_total": {
+                    "type": "integer"
+                }
+            }
+        },
+        "types.TxStats": {
+            "type": "object",
+            "properties": {
+                "time_stamp": {
+                    "type": "string"
+                },
+                "tx_count": {
+                    "type": "integer"
+                }
+            }
+        },
+        "types.Unbonding": {
+            "type": "object",
+            "properties": {
+                "moniker": {
+                    "type": "string"
+                },
+                "unbonding": {
+                    "$ref": "#/definitions/types.UnbondingDelegation"
+                }
+            }
+        },
+        "types.UnbondingDelegation": {
+            "type": "object",
+            "properties": {
+                "delegator_address": {
+                    "description": "delegator_address is the bech32-encoded address of the delegator.",
+                    "type": "string"
+                },
+                "entries": {
+                    "description": "entries are the unbonding delegation entries.",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/types.UnbondingDelegationEntry"
+                    }
+                },
+                "validator_address": {
+                    "description": "validator_address is the bech32-encoded address of the validator.",
+                    "type": "string"
+                }
+            }
+        },
+        "types.UnbondingDelegationEntry": {
+            "type": "object",
+            "properties": {
+                "balance": {
+                    "description": "balance defines the tokens to receive at completion.",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/types.Int"
+                        }
+                    ]
+                },
+                "completion_time": {
+                    "description": "completion_time is the unix time for unbonding completion.",
+                    "type": "string"
+                },
+                "creation_height": {
+                    "description": "creation_height is the height which the unbonding took place.",
+                    "type": "integer"
+                },
+                "initial_balance": {
+                    "description": "initial_balance defines the tokens initially scheduled to receive at completion.",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/types.Int"
+                        }
+                    ]
+                }
+            }
+        },
+        "types.UptimeBlock": {
+            "type": "object",
+            "properties": {
+                "height": {
+                    "type": "integer"
+                }
+            }
+        },
+        "types.ValidatorResponse": {
+            "type": "object",
+            "properties": {
+                "total": {
+                    "type": "integer"
+                },
+                "validators": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/github_com_hessegg_nikto-explorer_server_bc_types.Validator"
+                    }
+                }
+            }
+        },
+        "types.ValidatorUptime": {
+            "type": "object",
+            "properties": {
+                "blocks": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/types.UptimeBlock"
+                    }
+                },
+                "latest_height": {
+                    "type": "integer"
+                },
+                "uptime": {
+                    "type": "integer"
+                }
+            }
+        },
+        "version.Consensus": {
+            "type": "object",
+            "properties": {
+                "app": {
+                    "type": "integer"
+                },
+                "block": {
+                    "type": "integer"
+                }
+            }
+        }
+    },
+    "securityDefinitions": {
+        "BasicAuth": {
+            "type": "basic"
+        }
+    }
+}

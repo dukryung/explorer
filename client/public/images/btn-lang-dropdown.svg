@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+    <defs>
+        <style>
+            .cls-1,.cls-2{fill:none}.cls-2{stroke:#fff;stroke-width:2px}
+        </style>
+    </defs>
+    <g id="btn_lang_dropdown" transform="translate(-1187 -63)">
+        <path id="사각형_504" d="M0 0h18v18H0z" class="cls-1" data-name="사각형 504" transform="translate(1187 63)"/>
+        <path id="패스_2039" d="M213.414 684.379l5 5 5-5" class="cls-2" data-name="패스 2039" transform="translate(978.086 -615.379)"/>
+    </g>
+</svg>

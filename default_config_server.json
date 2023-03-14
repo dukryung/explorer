@@ -1,0 +1,74 @@
+{
+  "sync": {
+    "enable": true,
+    "fast_sync": {
+      "enable": true,
+      "worker": 8
+    },
+    "log": {
+      "enable": true,
+      "level": 1
+    },
+    "node": {
+      "_api": "185.227.109.182:12345",
+      "_grpc": "185.227.109.182:50013",
+      "api": "3.34.45.216:40007",
+      "grpc": "3.34.45.216:40008"
+    },
+    "db": {
+      "host": "localhost",
+      "driver_name": "postgres",
+      "user": "postgres",
+      "password": "qwer1234",
+      "db_name": "klaatoo-explorer",
+      "db_port": 55432,
+      "idle_conn": 2,
+      "max_conn": 10
+    }
+  },
+  "api": {
+    "enable": true,
+    "port": "9876",
+    "handler": {
+      "event": {
+        "cache": true,
+        "duration": 1000
+      },
+      "rest": {
+        "enable": true
+      },
+      "swagger": {
+        "enable": true
+      },
+      "websocket": {
+        "enable": true,
+        "duration": 1000
+      }
+    },
+    "log": {
+      "enable": true,
+      "level": 1
+    },
+    "node": {
+      "_api": "185.227.109.182:12345",
+      "_grpc": "185.227.109.182:50013",
+      "api": "3.34.45.216:40007",
+      "grpc": "3.34.45.216:40008"
+    },
+    "db": {
+      "host": "localhost",
+      "driver_name": "postgres",
+      "user": "postgres",
+      "password": "qwer1234",
+      "db_name": "klaatoo-explorer",
+      "db_port": 55432,
+      "idle_conn": 2,
+      "max_conn": 10
+    },
+    "redis": {
+      "host": "localhost",
+      "port": 56379,
+      "db": 0
+    }
+  }
+}

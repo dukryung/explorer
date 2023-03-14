@@ -1,0 +1,52 @@
+{
+  "network": {
+    "mainnet": {
+      "name": "Hostnet",
+      "api": "https://explorer.exais.net/rest",
+      "ws": "wss://explorer.exais.net/ws",
+      "bech32": {
+        "account": "exa",
+        "validator": "vl",
+        "operator": "op"
+      },
+      "networkToken": {
+        "base": "nexa",
+        "symbol": "EXA",
+        "precision": 9,
+        "description": "ExaisNet Platorm Coin"
+      }
+    },
+    "testnet": {
+      "name": "Hostnet",
+      "api": "https://explorer.exais.net/rest",
+      "ws": "wss://explorer.exais.net/ws",
+      "bech32": {
+        "account": "exa",
+        "validator": "vl",
+        "operator": "op"
+      },
+      "networkToken": {
+        "base": "nexa",
+        "symbol": "EXA",
+        "precision": 9,
+        "description": "ExaisNet Platorm Coin"
+      }
+    },
+    "localnet": {
+      "name": "Hostnet",
+      "api": "https://explorer.exais.net/rest",
+      "ws": "wss://explorer.exais.net/ws",
+      "bech32": {
+        "account": "exa",
+        "validator": "vl",
+        "operator": "op"
+      },
+      "networkToken": {
+        "base": "nexa",
+        "symbol": "EXA",
+        "precision": 9,
+        "description": "ExaisNet Platorm Coin"
+      }
+    }
+  }
+}
